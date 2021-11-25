@@ -1,5 +1,4 @@
 import { observable } from 'mobx';
-import * as _ from 'lodash';
 
 import RootStore from './RootStore';
 import Item from '../models/Item';
