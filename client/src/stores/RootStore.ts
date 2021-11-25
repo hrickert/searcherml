@@ -1,5 +1,4 @@
 import { action } from 'mobx';
-import _ from 'lodash';
 import ItemStore from './ItemStore';
 
 class RootStore {
