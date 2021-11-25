@@ -13,9 +13,9 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>Header</header>
-      <body>
+      <div>
         <p>{!data ? 'Loading...' : data}</p>
-      </body>
+      </div>
     </div>
   );
 }
