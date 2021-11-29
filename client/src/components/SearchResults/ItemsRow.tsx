@@ -3,17 +3,19 @@ import { observer } from 'mobx-react';
 import './ItemsRow.scss';
 import Item from '../../models/Item';
 import shipping from '../../img/ic_shipping.png';
+import { useNavigate } from 'react-router-dom';
 
 interface ItemsRowProps {
   item: Item;
 }
 
 const ItemsRow = observer((props: ItemsRowProps) => {
+  let navigate = useNavigate();
   const { id, title, price, picture, freeShipping, addressStateName } = props.item;
 
   return (
     <li className="ItemsRow">
-      <a className="ItemsRowWrapper" href={`items/${id}`}>
+      <div className="ItemsRowWrapper" onClick={() => navigate(`${id}`)}>
         <div className="ItemsRowImage">
           <img
             style={{ objectFit: 'contain' }}
@@ -33,7 +35,7 @@ const ItemsRow = observer((props: ItemsRowProps) => {
           <div className="ItemsRowGeneralDataTitle">{title}</div>
         </div>
         <div className="ItemsRowLocation">{addressStateName}</div>
-      </a>
+      </div>
     </li>
   );
 });

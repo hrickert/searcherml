@@ -19,6 +19,11 @@ function callExternalAPI(options, callback) {
     });
 }
 
+function getCategories(data) {
+    let categoriesObj = _.find(data, (f) => f.id === "category");
+    return categoriesObj && categoriesObj.values[0]? _.map(categoriesObj.values[0].path_from_root, (v)=> v.name) : []
+}
+
 router.get('/', function(req, res) {
     let urlParse = url.parse(req.url, true);
     let search = urlParse.search;
@@ -43,11 +48,10 @@ router.get('/', function(req, res) {
 function transformItemsData(data) {
     let results = {
         author: {
-            name: process.env.npm_package_author
+            name: process.env.npm_package_author,
         }
     };// FIXME agregar author
-    let categoriesObj = _.find(data['filters'], (f) => f.id === "category");
-    results.categories = categoriesObj && categoriesObj.values[0]? _.map(categoriesObj.values[0].path_from_root, (v)=> v.name) : []
+    results.categories = getCategories(data['filters']);
     results.items = _.map(data.results, (r)=> {
         return {
             id: r.id,
@@ -105,6 +109,7 @@ function transformItemData(data) {
             name: process.env.npm_package_author
         }
     };// FIXME agregar author
+    results.categories = getCategories(data['filters']);
     results.item = {
             id: data.id,
             title: data.title,

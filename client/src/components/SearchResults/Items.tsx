@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { observer } from 'mobx-react';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import './Items.scss';
 import RootStore from '../../stores/RootStore';
-import { observer } from 'mobx-react';
-import { useLocation } from 'react-router-dom';
 import ItemsList from './ItemsList';
 import ItemCategories from './ItemCategories';
+import * as _ from 'lodash';
 
 interface ItemsProps {
   store: RootStore;
@@ -13,9 +15,10 @@ interface ItemsProps {
 const Items = observer((props: ItemsProps) => {
   const { store } = props;
   const { itemStore } = store;
-  const { categories } = itemStore;
   const [gettingData, setGettingData] = useState(false);
   let query = useLocation().search.replace('search', 'q');
+  let [params] = useSearchParams();
+  let list = params.getAll('search');
 
   useEffect(() => {
     setGettingData(true);
@@ -30,10 +33,18 @@ const Items = observer((props: ItemsProps) => {
     <div className="Items">
       <div className="ItemsWrapper">
         {gettingData ? (
-          'Cargando'
+          <>
+            Cargando
+            <Helmet>
+              <title>Cargando...</title>
+            </Helmet>
+          </>
         ) : (
           <>
-            <ItemCategories categories={categories} />
+            <Helmet>
+              <title>{`${_.join(list, ' ')} | MercadoLibre 📦`}</title>
+            </Helmet>
+            <ItemCategories store={store} />
             <ItemsList store={store} />
           </>
         )}

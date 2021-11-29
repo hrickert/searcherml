@@ -6,8 +6,7 @@ import * as _ from 'lodash';
 
 export default class ItemStore {
   rootStore: RootStore;
-  // FIXME author ?
-  @observable categories?: Array<string>;
+  @observable categoriesItemsSearch?: Array<string>;
   @observable items: Array<Item> = [];
   @observable item?: Item;
 
@@ -21,8 +20,9 @@ export default class ItemStore {
       fetch(`/api/items${query}`)
         .then((res) => res.json())
         .then((data) => {
-          this.items = _.map(data.items, (itemData: object) => new Item(itemData));
-          this.categories = data.categories;
+          let items = _.slice(data.items || [], 0, 4);
+          this.items = _.map(items, (itemData: object) => new Item(itemData));
+          this.categoriesItemsSearch = data.categories;
           resolve();
         })
         .catch((error: string) => reject(error));

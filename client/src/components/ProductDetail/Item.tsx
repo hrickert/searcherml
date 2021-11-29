@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './Item.scss';
-import RootStore from '../../stores/RootStore';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import './Item.scss';
+import RootStore from '../../stores/RootStore';
 import ItemCategories from '../SearchResults/ItemCategories';
 import ItemDetail from './ItemDetail';
 
@@ -12,8 +13,9 @@ interface ItemProps {
 
 const Item = observer((props: ItemProps) => {
   const [gettingData, setGettingData] = useState(false);
-  const { itemStore } = props.store;
-  const { categories, item } = itemStore;
+  const { store } = props;
+  const { itemStore } = store;
+  const { item } = itemStore;
   let itemId = useParams().id;
 
   useEffect(() => {
@@ -29,11 +31,23 @@ const Item = observer((props: ItemProps) => {
     <div className="Item">
       <div className="ItemWrapper">
         {gettingData ? (
-          'Cargando'
+          <>
+            Cargando
+            <Helmet>
+              <title>Cargando...</title>
+            </Helmet>
+          </>
         ) : (
           <>
-            <ItemCategories categories={categories} />
-            {item && <ItemDetail item={item} />}
+            <ItemCategories store={store} />
+            {item && (
+              <>
+                <ItemDetail item={item} />{' '}
+                <Helmet>
+                  <title>{`${item.title} | MercadoLibre 📦`}</title>
+                </Helmet>
+              </>
+            )}
           </>
         )}
       </div>

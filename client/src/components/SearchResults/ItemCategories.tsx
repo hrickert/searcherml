@@ -1,20 +1,21 @@
 import React from 'react';
-import './ItemCategories.scss';
 import { observer } from 'mobx-react';
+import './ItemCategories.scss';
+import RootStore from '../../stores/RootStore';
 
 interface ItemCategoriesProps {
-  categories?: Array<string>;
+  store: RootStore;
 }
 
 const ItemCategories = observer((props: ItemCategoriesProps) => {
-  const { categories } = props;
-  let list = categories ? categories : [];
+  const { categoriesItemsSearch } = props.store.itemStore;
+  let list = categoriesItemsSearch || [];
 
   return (
     <ol className="ItemCategories">
       {list.map((category: string, index: number) => {
         let last = index === list.length - 1;
-        return <li>{`${category} ${last ? '' : '>'}`}</li>;
+        return <li key={index}>{`${category} ${last ? '' : '>'}`}</li>;
       })}
     </ol>
   );

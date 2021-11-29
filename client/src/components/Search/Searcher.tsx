@@ -3,16 +3,19 @@ import { observer } from 'mobx-react';
 import './Searcher.scss';
 import InputSearch from './InputSearch';
 import ButtonSearch from './ButtonSearch';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 interface SearcherProps {}
 
 const Searcher = observer((props: SearcherProps) => {
+  let navigate = useNavigate();
   let { searchParams, setSearchParams } = useInitializeSearchParams();
 
   const onKeyDown = (e: any) => {
     if (e.key === 'Enter') {
       e.preventDefault();
+      let urlParam = searchParams.length > 0 ? '?search=' : '';
+      navigate(`items${urlParam}${searchParams}`);
     }
   };
 

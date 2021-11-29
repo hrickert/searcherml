@@ -1,7 +1,7 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import './ItemsList.scss';
 import RootStore from '../../stores/RootStore';
-import { observer } from 'mobx-react';
 import Item from '../../models/Item';
 import ItemsRow from './ItemsRow';
 

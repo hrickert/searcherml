@@ -1,13 +1,12 @@
 import React from 'react';
 import './InputSearch.scss';
-import { observer } from 'mobx-react';
 
 interface InputSearchProps {
   searchParams: string | any[];
   setSearchParams: (v: string | any[]) => void;
 }
 
-const InputSearch = observer((props: InputSearchProps) => {
+const InputSearch = (props: InputSearchProps) => {
   const { searchParams, setSearchParams } = props;
 
   return (
@@ -24,6 +23,6 @@ const InputSearch = observer((props: InputSearchProps) => {
       maxLength={120}
     />
   );
-});
+};
 
 export default InputSearch;
