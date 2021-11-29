@@ -2,7 +2,7 @@ import { action, observable } from 'mobx';
 
 import RootStore from './RootStore';
 import Item from '../models/Item';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 export default class ItemStore {
   rootStore: RootStore;
