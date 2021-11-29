@@ -1,3 +1,4 @@
+import { computed } from 'mobx';
 import ItemPrice from './ItemPrice';
 
 export default class Item {
@@ -7,8 +8,9 @@ export default class Item {
   picture: string;
   condition: string;
   freeShipping: boolean;
-  soldQuantity: number;
-  description: string;
+  addressStateName: string;
+  soldQuantity?: number;
+  description?: string;
 
   constructor(data: any) {
     this.id = data['id'];
@@ -17,7 +19,15 @@ export default class Item {
     this.picture = data['picture'];
     this.condition = data['condition'];
     this.freeShipping = data['free_shipping'];
+    this.addressStateName = data['address_state_name'];
     this.soldQuantity = data['sold_quantity'];
     this.description = data['description'];
+  }
+
+  @computed
+  get infoStr() {
+    let condition = this.condition === 'new' ? 'Nuevo' : 'Usado';
+    let solds = `${this.soldQuantity} vendidos`;
+    return `${condition} - ${solds}`;
   }
 }

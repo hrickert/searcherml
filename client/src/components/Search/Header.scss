@@ -1,0 +1,17 @@
+@import '../../default_variables';
+
+.Header {
+    background-color: $header-background-color;
+
+    .HeaderWrapper {
+        @extend .CenterOnUsableWidthPercentage;
+        padding: 7px 0;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        gap: 30px;
+    }
+}

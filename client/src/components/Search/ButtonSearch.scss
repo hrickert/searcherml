@@ -1,0 +1,17 @@
+@import '../../default_variables';
+
+.ButtonSearch {
+    background-color: $container-background-color;
+    border: none;
+    -webkit-border-radius: 0 2px 2px 0;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    height: 37px;
+    width: 50px;
+    // padding: 0 10px;
+
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

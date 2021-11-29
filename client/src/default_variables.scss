@@ -1,0 +1,30 @@
+// Backgrounds
+$header-background-color: #ffe600;
+$container-background-color: #eeeeee;
+$input-background-color: #ffffff;
+$card-item-background-color: #ffffff;
+$btn-buy-background-color: #3483fa;
+
+// Text
+$font-color-1: #333333;
+$font-color-2: #666666;
+$font-color-3: #999999;
+$font-color-4: #ffffff;
+
+// Measures
+$usable-width-percentage: 80%;
+
+// EXTENDS
+.CenterOnUsableWidthPercentage {
+    // FIXME usar grid
+    width: $usable-width-percentage;
+    max-width: 1200px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 1300px) {
+    .CenterOnUsableWidthPercentage {
+        width: 95%;
+    }
+}

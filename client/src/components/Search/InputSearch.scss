@@ -1,0 +1,16 @@
+@import '../../default_variables';
+
+.InputSearch {
+    width: 100%;
+    font-size: 18px;
+    padding: 8px 10px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    color: $font-color-1;
+    background-color: $input-background-color;
+    border: 0 #00000033;
+
+    &::placeholder {
+        color: $font-color-3;
+    }
+}

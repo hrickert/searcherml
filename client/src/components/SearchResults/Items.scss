@@ -1,0 +1,10 @@
+@import '../../default_variables';
+
+.Items {
+    background-color: $container-background-color;
+    height: 100%;
+
+    .ItemsWrapper {
+        @extend .CenterOnUsableWidthPercentage;
+    }
+}

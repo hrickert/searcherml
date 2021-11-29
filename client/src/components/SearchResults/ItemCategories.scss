@@ -1,0 +1,18 @@
+@import '../../default_variables';
+
+.ItemCategories {
+    color: $font-color-3;
+    font-size: 14px;
+    margin: 0;
+    padding: 16px 0;
+
+    li {
+        list-style: none;
+        display: inline;
+        padding: 0 3px;
+
+        &:last-child {
+            font-weight: 600;
+        }
+    }
+}

@@ -1,0 +1,67 @@
+@import '../../default_variables';
+
+.ItemDetail {
+    background-color: $card-item-background-color;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    .ItemDetailLeft {
+        width: 70%;
+
+        .ItemDetailImage {
+            background-color: $card-item-background-color;
+            width: 680px;
+        }
+
+        .ItemDetailDescription {
+            margin-top: 10vh;
+            padding-left: 32px;
+
+            .ItemDetailDescriptionTitle {
+                color: $font-color-1;
+                font-size: 28px;
+            }
+
+            .ItemDetailDescriptionText {
+                color: $font-color-2;
+                padding: 32px 0;
+                margin: 0;
+            }
+        }
+    }
+
+    .ItemDetailRight {
+        width: 30%;
+
+        .ItemDetailInfo {
+            font-size: 14px;
+            padding-top: 32px;
+        }
+
+        .ItemDetailTitle {
+            font-size: 24px;
+            padding-top: 16px;
+        }
+
+        .ItemDetailPrice {
+            font-size: 46px;
+            padding-top: 32px;
+        }
+
+        .ItemDetailButton {
+            width: 70%;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 32px 32px 0 0;
+            padding: 10px 0;
+            text-align: center;
+            background-color: $btn-buy-background-color;
+            color: $font-color-4;
+        }
+    }
+}
