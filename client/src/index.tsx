@@ -1,29 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import RootStore from './stores/RootStore';
-import { reaction } from 'mobx';
 import Main from './Main';
 
 const rootStore = new RootStore();
 (window as any).rootStore = rootStore;
-reaction(
-  () => {
-    return rootStore.uiStore.pendingProgress === 0;
-  },
-  (zeroReqs) => {
-    if (zeroReqs) {
-      NProgress.done();
-    } else {
-      NProgress.configure({ showSpinner: false });
-      NProgress.inc();
-    }
-  },
-  { fireImmediately: true }
-);
 
 ReactDOM.render(
   <React.StrictMode>
