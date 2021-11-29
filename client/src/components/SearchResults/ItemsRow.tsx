@@ -10,6 +10,7 @@ interface ItemsRowProps {
 
 const ItemsRow = observer((props: ItemsRowProps) => {
   const { id, title, price, picture, freeShipping, addressStateName } = props.item;
+
   return (
     <li className="ItemsRow">
       <a className="ItemsRowWrapper" href={`items/${id}`}>
