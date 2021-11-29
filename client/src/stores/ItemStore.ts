@@ -1,5 +1,4 @@
 import { action, observable } from 'mobx';
-
 import RootStore from './RootStore';
 import Item from '../models/Item';
 import * as _ from 'lodash';
@@ -8,7 +7,7 @@ export default class ItemStore {
   rootStore: RootStore;
   @observable categoriesItemsSearch?: Array<string>;
   @observable items: Array<Item> = [];
-  @observable item?: Item;
+  @observable currentItem?: Item;
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
@@ -35,7 +34,7 @@ export default class ItemStore {
       fetch(`/api/items/${id}`)
         .then((res) => res.json())
         .then((data) => {
-          this.item = new Item(data.item);
+          this.currentItem = new Item(data.item);
           resolve();
         })
         .catch((error: string) => reject(error));

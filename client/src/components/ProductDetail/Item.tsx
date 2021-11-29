@@ -6,6 +6,7 @@ import './Item.scss';
 import RootStore from '../../stores/RootStore';
 import ItemCategories from '../SearchResults/ItemCategories';
 import ItemDetail from './ItemDetail';
+import Spinner from '../Spinner';
 
 interface ItemProps {
   store: RootStore;
@@ -15,7 +16,7 @@ const Item = observer((props: ItemProps) => {
   const [gettingData, setGettingData] = useState(false);
   const { store } = props;
   const { itemStore } = store;
-  const { item } = itemStore;
+  const { currentItem } = itemStore;
   let itemId = useParams().id;
 
   useEffect(() => {
@@ -31,20 +32,15 @@ const Item = observer((props: ItemProps) => {
     <div className="Item">
       <div className="ItemWrapper">
         {gettingData ? (
-          <>
-            Cargando
-            <Helmet>
-              <title>Cargando...</title>
-            </Helmet>
-          </>
+          <Spinner />
         ) : (
           <>
             <ItemCategories store={store} />
-            {item && (
+            {currentItem && (
               <>
-                <ItemDetail item={item} />{' '}
+                <ItemDetail item={currentItem} />{' '}
                 <Helmet>
-                  <title>{`${item.title} | MercadoLibre 📦`}</title>
+                  <title>{`${currentItem.title} | MercadoLibre 📦`}</title>
                 </Helmet>
               </>
             )}

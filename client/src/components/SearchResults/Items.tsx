@@ -7,6 +7,7 @@ import RootStore from '../../stores/RootStore';
 import ItemsList from './ItemsList';
 import ItemCategories from './ItemCategories';
 import * as _ from 'lodash';
+import Spinner from '../Spinner';
 
 interface ItemsProps {
   store: RootStore;
@@ -33,12 +34,7 @@ const Items = observer((props: ItemsProps) => {
     <div className="Items">
       <div className="ItemsWrapper">
         {gettingData ? (
-          <>
-            Cargando
-            <Helmet>
-              <title>Cargando...</title>
-            </Helmet>
-          </>
+          <Spinner />
         ) : (
           <>
             <Helmet>
