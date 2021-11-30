@@ -10,13 +10,13 @@ interface ItemsListProps {
 }
 
 const ItemsList = observer((props: ItemsListProps) => {
-  const { itemStore } = props.store;
-  const { items } = itemStore;
+  const { store } = props;
+  const { items } = store.itemStore;
 
   return (
     <ol className="ItemsList">
       {items.map((item: Item, index: number) => {
-        return <ItemsRow key={index} item={item} />;
+        return <ItemsRow key={index} item={item} store={store} />;
       })}
     </ol>
   );

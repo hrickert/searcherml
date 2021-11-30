@@ -12,10 +12,6 @@ app.use(bodyParser.json());
 
 var router = require('./routes');
 app.use('/api', router);
-app.use(function(err, req, res, next) {
-  res.status(res.statusCode || 500);
-  res.json({ error: res.error });
-});
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
@@ -24,3 +20,5 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
+
+module.export = app;

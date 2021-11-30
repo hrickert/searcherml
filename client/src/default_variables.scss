@@ -13,6 +13,7 @@ $font-color-4: #ffffff;
 
 // Measures
 $usable-width-percentage: 80%;
+$max-width-mobile: 750px;
 
 // EXTENDS
 .CenterOnUsableWidthPercentage {
@@ -26,5 +27,11 @@ $usable-width-percentage: 80%;
 @media (max-width: 1300px) {
     .CenterOnUsableWidthPercentage {
         width: 95%;
+    }
+}
+
+@media (max-width: $max-width-mobile) {
+    .CenterOnUsableWidthPercentage {
+        width: 100%;
     }
 }

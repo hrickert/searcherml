@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 
 export default class ItemStore {
   rootStore: RootStore;
+  @observable author?: string;
   @observable categoriesItemsSearch?: Array<string>;
   @observable items: Array<Item> = [];
   @observable currentItem?: Item;

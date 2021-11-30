@@ -4,14 +4,18 @@ import './ItemsRow.scss';
 import Item from '../../models/Item';
 import shipping from '../../img/ic_shipping.png';
 import { useNavigate } from 'react-router-dom';
+import RootStore from '../../stores/RootStore';
 
 interface ItemsRowProps {
+  store: RootStore;
   item: Item;
 }
 
 const ItemsRow = observer((props: ItemsRowProps) => {
   let navigate = useNavigate();
   const { id, title, price, picture, freeShipping, addressStateName } = props.item;
+  const { isMobile } = props.store;
+  let imgPx = isMobile ? 120 : 180;
 
   return (
     <li className="ItemsRow">
@@ -19,8 +23,8 @@ const ItemsRow = observer((props: ItemsRowProps) => {
         <div className="ItemsRowImage">
           <img
             style={{ objectFit: 'contain' }}
-            width={180}
-            height={180}
+            width={imgPx}
+            height={imgPx}
             src={picture}
             alt={title}
           />

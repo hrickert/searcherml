@@ -15,3 +15,11 @@
         gap: 30px;
     }
 }
+
+@media (max-width: $max-width-mobile) {
+    .Header {
+        .HeaderWrapper {
+            gap: 5px;
+        }
+    }
+}

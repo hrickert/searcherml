@@ -38,7 +38,7 @@ const Item = observer((props: ItemProps) => {
             <ItemCategories store={store} />
             {currentItem && (
               <>
-                <ItemDetail item={currentItem} />{' '}
+                <ItemDetail item={currentItem} store={store} />{' '}
                 <Helmet>
                   <title>{`${currentItem.title} | MercadoLibre 📦`}</title>
                 </Helmet>

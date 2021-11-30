@@ -9,9 +9,10 @@ interface ItemCategoriesProps {
 
 const ItemCategories = observer((props: ItemCategoriesProps) => {
   const { categoriesItemsSearch } = props.store.itemStore;
+  const { isMobile } = props.store;
   let list = categoriesItemsSearch || [];
 
-  return (
+  return isMobile && list.length === 0 ? null : (
     <ol className="ItemCategories">
       {list.map((category: string, index: number) => {
         let last = index === list.length - 1;
