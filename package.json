@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha server/routes/items.test.js --exit",
+    "test": "mocha server/test/itemsTest.js --exit",
     "start": "node server/app.js",
     "build": "cd client && npm install && npm run build"
   },
